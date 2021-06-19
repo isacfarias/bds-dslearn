@@ -2,12 +2,15 @@ package com.farias.dslearnbds.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -21,13 +24,16 @@ public class Offer implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String edition;
+	private Instant startMoment;
+	private Instant endMoment;
 	
 	@ManyToOne
 	@JoinColumn(name = "course_id")
 	private Course course;
-	private String edition;
-	private Instant startMoment;
-	private Instant endMoment;
+	
+	@ManyToMany(mappedBy = "offer")
+	private List<Resource> resources = new ArrayList<>();
 	
 	public Offer() {
 		super();
@@ -80,6 +86,10 @@ public class Offer implements Serializable {
 
 	public void setEndMoment(Instant endMoment) {
 		this.endMoment = endMoment;
+	}
+
+	public List<Resource> getResources() {
+		return resources;
 	}
 
 	@Override
