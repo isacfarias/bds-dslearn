@@ -20,3 +20,8 @@ INSERT INTO tb_offer (edition, start_moment, end_moment, course_id) values ('2.0
 insert into tb_resource(title, description, position, img_uri, type, external_link, offer_id) values ('Trilha HTML', 'Trilha principal do curso', 1, 'https://cdn.pixabay.com/photo/2020/05/31/09/40/online-course-5242018_1280.jpg', 1, null, 1);
 insert into tb_resource(title, description, position, img_uri, type, external_link, offer_id) values ('Forum', 'Tire suas duvidas', 1, 'https://cdn.pixabay.com/photo/2020/05/31/09/40/online-course-5242018_1280.jpg', 2, null, 1);
 insert into tb_resource(title, description, position, img_uri, type, external_link, offer_id) values ('Lives', 'Lives exclusivas', 1, 'https://cdn.pixabay.com/photo/2020/05/31/09/40/online-course-5242018_1280.jpg', 0, null, 1);
+
+
+insert into tb_section (title, description, position, img_uri, resource_id, prerequisite_id) values ('Capitulo 1',  'Neste capitulo vai ser dado o start', 1, 'https://cdn.pixabay.com/photo/2020/05/31/09/40/online-course-5242018_1280.jpg', 1, null);
+insert into tb_section (title, description, position, img_uri, resource_id, prerequisite_id) values ('Capitulo 2',  'Neste capitulo vamos continuar', 1, 'https://cdn.pixabay.com/photo/2020/05/31/09/40/online-course-5242018_1280.jpg', 1, 1);
+insert into tb_section (title, description, position, img_uri, resource_id, prerequisite_id) values ('Capitulo 3',  'Neste capitulo vamos finalizar', 1, 'https://cdn.pixabay.com/photo/2020/05/31/09/40/online-course-5242018_1280.jpg', 1, 2);

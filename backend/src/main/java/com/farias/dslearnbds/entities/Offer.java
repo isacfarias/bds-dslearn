@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -32,7 +32,7 @@ public class Offer implements Serializable {
 	@JoinColumn(name = "course_id")
 	private Course course;
 	
-	@ManyToMany(mappedBy = "offer")
+	@OneToMany(mappedBy = "offer")
 	private List<Resource> resources = new ArrayList<>();
 	
 	public Offer() {
