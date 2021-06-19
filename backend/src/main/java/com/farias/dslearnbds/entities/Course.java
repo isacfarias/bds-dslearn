@@ -1,17 +1,16 @@
 package com.farias.dslearnbds.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -27,6 +26,9 @@ public class Course implements Serializable {
 	private String name;
 	private String imgUri;
 	private String imgGrayUri;
+	
+	@OneToMany(mappedBy = "course")
+	List<Offer> offers = new ArrayList<>();
 	
 	public Course() {
 		super();
@@ -70,6 +72,10 @@ public class Course implements Serializable {
 
 	public void setImgGrayUri(String imgGrayUri) {
 		this.imgGrayUri = imgGrayUri;
+	}
+
+	public List<Offer> getOffers() {
+		return offers;
 	}
 
 	@Override
