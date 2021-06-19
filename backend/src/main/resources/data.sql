@@ -25,3 +25,7 @@ insert into tb_resource(title, description, position, img_uri, type, external_li
 insert into tb_section (title, description, position, img_uri, resource_id, prerequisite_id) values ('Capitulo 1',  'Neste capitulo vai ser dado o start', 1, 'https://cdn.pixabay.com/photo/2020/05/31/09/40/online-course-5242018_1280.jpg', 1, null);
 insert into tb_section (title, description, position, img_uri, resource_id, prerequisite_id) values ('Capitulo 2',  'Neste capitulo vamos continuar', 1, 'https://cdn.pixabay.com/photo/2020/05/31/09/40/online-course-5242018_1280.jpg', 1, 1);
 insert into tb_section (title, description, position, img_uri, resource_id, prerequisite_id) values ('Capitulo 3',  'Neste capitulo vamos finalizar', 1, 'https://cdn.pixabay.com/photo/2020/05/31/09/40/online-course-5242018_1280.jpg', 1, 2);
+
+
+insert into tb_enrollment(enrollment_moment, refund_moment, avaliable, only_update, user_id, offer_id) values (TIMESTAMP WITH TIME ZONE '2020-06-20T08:00:00Z', null, true, false, 1, 1);
+insert into tb_enrollment(enrollment_moment, refund_moment, avaliable, only_update, user_id, offer_id) values (TIMESTAMP WITH TIME ZONE '2020-06-20T10:00:00Z', null, true, false, 2, 1);
