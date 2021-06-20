@@ -29,3 +29,23 @@ insert into tb_section (title, description, position, img_uri, resource_id, prer
 
 insert into tb_enrollment(enrollment_moment, refund_moment, avaliable, only_update, user_id, offer_id) values (TIMESTAMP WITH TIME ZONE '2020-06-20T08:00:00Z', null, true, false, 1, 1);
 insert into tb_enrollment(enrollment_moment, refund_moment, avaliable, only_update, user_id, offer_id) values (TIMESTAMP WITH TIME ZONE '2020-06-20T10:00:00Z', null, true, false, 2, 1);
+
+insert into tb_lesson (title, position, section_id) values ('Aula 1 do capitulo 1', 1, 1);
+insert into tb_content (id, text_content, video_uri) values (1, 'Material de apoio: abc', 'https://youtu.be/-gUHKJzeK9g');
+
+insert into tb_lesson (title, position, section_id) values ('Aula 2 do capitulo 1', 2, 1);
+insert into tb_content (id, text_content, video_uri) values (2, '', 'https://youtu.be/-gUHKJzeK9g');
+
+insert into tb_lesson (title, position, section_id) values ('Aula 3 do capitulo 1', 3, 1);
+insert into tb_content (id, text_content, video_uri) values (3, '', 'https://youtu.be/-gUHKJzeK9g');
+
+insert into tb_lesson (title, position, section_id) values ('Task do capitulo 1', 4, 1);
+insert into tb_task (id, description, quest_count, approval_count, weight, due_date) values (4, 'Fazer bolo de Ovo', 5, 4, 1.0, TIMESTAMP WITH TIME ZONE '2020-06-25T08:00:00Z');
+
+insert into tb_lessons_done (lesson_id, user_id, offer_id) values (1, 1, 1);
+insert into tb_lessons_done (lesson_id, user_id, offer_id) values (2, 1, 1);
+
+
+
+
+
