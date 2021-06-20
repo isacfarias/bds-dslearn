@@ -2,13 +2,16 @@ package com.farias.dslearnbds.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.farias.dslearnbds.entities.pk.EnrollmentId;
@@ -33,6 +36,9 @@ public class Enrollment implements Serializable {
 	
 	@ManyToMany(mappedBy = "enrollmentsDone")
 	private Set<Lesson> lessonsDone = new HashSet<>();
+	
+	@OneToMany(mappedBy = "enrollment")
+	private List<Deliver> deliveries = new ArrayList<>();
 
 	public Enrollment() {
 		super();
@@ -106,6 +112,10 @@ public class Enrollment implements Serializable {
 
 	public Set<Lesson> getLessonsDone() {
 		return lessonsDone;
+	}
+	
+	public List<Deliver> getDeliveries() {
+		return deliveries;
 	}
 
 	@Override
