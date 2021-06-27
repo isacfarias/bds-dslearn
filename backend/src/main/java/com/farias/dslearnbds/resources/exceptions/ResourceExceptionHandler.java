@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 //import com.amazonaws.AmazonClientException;
 //import com.amazonaws.AmazonServiceException;
 import com.farias.dslearnbds.service.exceptions.DataBaseException;
+import com.farias.dslearnbds.service.exceptions.ForbiddenException;
 import com.farias.dslearnbds.service.exceptions.ResourceNotFoundException;
+import com.farias.dslearnbds.service.exceptions.UnauthorizedException;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
@@ -99,6 +101,20 @@ public class ResourceExceptionHandler {
 				status,
 				"Illegal Argument");
 
+		return ResponseEntity.status(status).body(error);
+	}
+	
+	@ExceptionHandler(ForbiddenException.class)
+	public ResponseEntity<OAuthCustomError> forbidden(ForbiddenException e, HttpServletRequest request) {
+		HttpStatus status = HttpStatus.FORBIDDEN;
+		OAuthCustomError error = new  OAuthCustomError("Forbidden", e.getMessage());
+		return ResponseEntity.status(status).body(error);
+	}
+	
+	@ExceptionHandler(UnauthorizedException.class)
+	public ResponseEntity<OAuthCustomError> unauthorized(UnauthorizedException e, HttpServletRequest request) {
+		HttpStatus status = HttpStatus.UNAUTHORIZED;
+		OAuthCustomError error = new  OAuthCustomError("Unauthorized", e.getMessage());
 		return ResponseEntity.status(status).body(error);
 	}
 

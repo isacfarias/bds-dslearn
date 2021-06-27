@@ -41,6 +41,9 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private RoleRepository roleRepository;
 	
+	@Autowired
+	private AuthService authService;
+	
 	@Transactional(readOnly = true)
 	public Page<UserDTO> findAllPaged(PageRequest pageRequest) {
 		return userRepository.findAll(pageRequest).map(UserDTO::new);
@@ -48,6 +51,7 @@ public class UserService implements UserDetailsService {
 
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
+		authService.validateSelfOrAdmin(id);
 		User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
 		return new UserDTO(user);				
 	}
