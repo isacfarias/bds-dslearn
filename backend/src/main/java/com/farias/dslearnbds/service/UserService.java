@@ -1,17 +1,31 @@
 package com.farias.dslearnbds.service;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.farias.dslearnbds.dto.RoleDTO;
+import com.farias.dslearnbds.dto.UserDTO;
+import com.farias.dslearnbds.dto.UserInsertDTO;
+import com.farias.dslearnbds.dto.UserUpdateDTO;
+import com.farias.dslearnbds.entities.Role;
 import com.farias.dslearnbds.entities.User;
 import com.farias.dslearnbds.repositories.RoleRepository;
 import com.farias.dslearnbds.repositories.UserRepository;
+import com.farias.dslearnbds.service.exceptions.DataBaseException;
+import com.farias.dslearnbds.service.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -27,7 +41,6 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private RoleRepository roleRepository;
 	
-	/*
 	@Transactional(readOnly = true)
 	public Page<UserDTO> findAllPaged(PageRequest pageRequest) {
 		return userRepository.findAll(pageRequest).map(UserDTO::new);
@@ -69,8 +82,7 @@ public class UserService implements UserDetailsService {
 	}
 	
 	private void copyDtoToEntity(UserDTO dto, User user) {
-		user.setFirstName(dto.getFirstName());
-		user.setLastName(dto.getLastName());
+		user.setName(dto.getName());
 		user.setEmail(dto.getEmail());
 		user.getRoles().clear();
 		for (RoleDTO roleDTO : dto.getRoles()) {
@@ -79,7 +91,6 @@ public class UserService implements UserDetailsService {
 		}
 	}
 	
-	*/
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -91,4 +102,5 @@ public class UserService implements UserDetailsService {
 		LOG.info("User found:"+username);
 		return user;
 	}
+	
 }

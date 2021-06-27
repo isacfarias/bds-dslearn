@@ -12,9 +12,6 @@ import com.farias.dslearnbds.entities.User;
 
 public class UserDTO implements Serializable {
 		
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
@@ -29,7 +26,6 @@ public class UserDTO implements Serializable {
 	public UserDTO() {}
 
 	public UserDTO(Long id, String name, String email) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;	
