@@ -19,4 +19,7 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
     )
     Page<Notification> find(User user, boolean unreadOnly, Pageable pageable);
 
+
+
+
 }
